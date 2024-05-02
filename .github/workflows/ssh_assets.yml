@@ -10,20 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
 
+      # - name: Install SSH key
+      #   uses: webfactory/ssh-agent@v0.5.3
+      #   with:
+      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-
-   # - name: Install SSH key
-   #   uses: webfactory/ssh-agent@v0.5.3
-   #   with:
-   #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    - name: Copy assets to server
-      run: |
-        sshpass -p agp6SZ9.9KO0x* rsync -avz -e 'ssh -p 7822' '--exclude='.git' --exclude='.yml' . kindshop@mi3-ts111.a2hosting.com:~/romankagan.com/
-
+      - name: Copy assets to server
+        run: |
+          sshpass -p agp6SZ9.9KO0x* rsync -avz -e 'ssh -p 7822' --exclude='.git' --exclude='.yml' . kindshop@mi3-ts111.a2hosting.com:~/romankagan.com/
