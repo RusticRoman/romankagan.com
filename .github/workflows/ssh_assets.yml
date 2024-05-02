@@ -20,5 +20,5 @@ jobs:
 
     - name: Copy assets to server
       run: |
-        sshpass -p agp6SZ9.9KO0x* rsync -avz --exclude='.git' --exclude='.yml' . kindshop@mi3-ts111.a2hosting.com:~/romankagan.com/
+        sshpass -p agp6SZ9.9KO0x* rsync -avz -e 'ssh -p 7822' '--exclude='.git' --exclude='.yml' . kindshop@mi3-ts111.a2hosting.com:~/romankagan.com/
 
