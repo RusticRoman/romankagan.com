@@ -23,4 +23,8 @@ jobs:
 
       - name: Copy assets to server
         run: |
+          # Accept the SSH host key for the server
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 7822 kindshop@mi3-ts111.a2hosting.com >> ~/.ssh/known_hosts
+        
           sshpass -p agp6SZ9.9KO0x* rsync -avz -e 'ssh -p 7822' --exclude='.git' --exclude='.yml' . kindshop@mi3-ts111.a2hosting.com:~/romankagan.com/
